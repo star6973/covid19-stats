@@ -24,9 +24,8 @@ const Contents = () => {
 
     useEffect(() => {
         const fetchEvents = async () => {
-            const authKey = "e7QkPUk1he6L9GLScg5wEP8iyZ3zMORh%2FTx46J3PWMEz8rxfx6If%2FWoO7IJ398v0SJsk2krxkh0lm0B4Ks0ayw%3D%3D";
             const res = await Axios.get("https://api.covid19api.com/total/dayone/country/kr");
-            const response = await Axios.get("/api/openapi/service/rest/Covid19/getCovid19InfStateJson", {
+            const response = await Axios.get("/api/openapi/service/rest/Covid19/getCovid19InfStateJson", {                
                 params: {
                     "serviceKey": authKey,
                     "numOfRows": 10,
