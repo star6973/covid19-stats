@@ -104,11 +104,56 @@ const comparedOptions = {
     ],
 };
 
+//~ 국내발생 현황
 //~ decideCnt: 확진자 수
 //~ clearCnt: 격리해제 수
 //~ examCnt: 검사진행 수
 //~ deathCnt: 사망자 수
 //~ careCnt: 치료 중 환자 수
+
+
+//! 해외발생 현황
+//! areaNm: 지역명(한글)
+//! areaNmEn: 지역명(영문)
+//! natDeathCnt: 국가별 사망자 수
+//! natDeathRate: 확진률 대비 사망률
+//! natDefCnt: 국가별 확진자 수
+//! nationNm: 국가명(한글)
+//! nationNmEn: 국가명(영문)
+//! seq: 게시글 번호(고윳값)
+
+
+//? gubun: 시도명(한글)
+//? gubunEn: 시도명(영어)
+//? incDec: 전일대비 증감수
+//? deathCnt: 사망자 수
+//? defCnt: 확진자 수
+//? isolClearCnt: 격리해제수
+//? isolIngCnt: 격리중 환자수
+//? localOccCnt: 지역발생수
+//? overFlowCnt: 해외유입수
+//? qurRate: 10만명당 발생률
+//? seq: 고윳값
+
+
+//& confCase: 확진자
+//& confCaseRate: 확진률
+//& criticalRate: 치명률
+//& death: 사망자
+//& deathRate: 사망률
+//& gubun: 구분(성별, 연령별) -> 8/21일 날짜에 대해 남성/여성/0-9/10-19/.../80이상
+//& seq: 고윳값
+
+
+//^ content: 내용
+//^ contentHtml: html 내용
+//^ countryEnName: 국가명(영문)
+//^ countryName: 국가명(한글)
+//^ fileUrl: 첨부파일 경로
+//^ id: 교윳값
+//^ title: 제목
+//^ wrDt: 작성일
+
 const Contents = () => {
     const [checkStartDate, setCheckStartDate] = useState("");
     const [checkEndDate, setCheckEndDate] = useState("");
@@ -120,6 +165,18 @@ const Contents = () => {
             const response = await axios.get("/api/covid");
             const response_data = (response.data.items).item.sort((a, b) => a.stateDt - b.stateDt);
             createDataForm(response_data);
+
+            const response2 = await axios.get("/api/covid2");
+            console.log(response2);
+
+            const response3 = await axios.get("/api/covid3");
+            console.log(response3);
+
+            const response4 = await axios.get("/api/covid4");
+            console.log(response4);
+
+            const response5 = await axios.get("/api/covid5");
+            console.log(response5);
         };
 
         const createDataForm = items => {
