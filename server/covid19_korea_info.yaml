@@ -1,0 +1,50 @@
+paths:
+  /covid19/korea-info:
+    get:
+      tags:
+        - 국내 코로나 19 감염 현황 정보
+      description: |
+        | 정보 | 설명  |
+        |---|---|
+        | API 요약 | 코로나 19 감염증으로 인한 일별 확진자, 완치자, 치료 중인환자, 사망자 등에 대한 현황자료 |
+        | Service URL | http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson |
+        | 메시지 타입 | Request-Response |
+      parameters:
+        - in: query
+          name: serviceKey
+          schema:
+            type: string
+            example: https://www.data.go.kr/data/15043376/openapi.do에서 인증키를 받으세요
+          description: 공공데이터포털에서 발급받은 인증키
+          required: true
+        - in: query
+          name: numOfRows
+          schema:
+            type: string
+            example: 10
+          description: 한 페이지 결과 수
+          required: true
+        - in: query
+          name: pageNo
+          schema:
+            type: string
+            example: 1
+          description: 페이지 번호
+          required: true
+        - in: query
+          name: startCreateDt
+          schema:
+            type: string
+            example: 20200101
+          description: 검색할 생성일 범위의 시작
+          required: true
+        - in: query
+          name: endCreateDt
+          schema:
+            type: string
+            example: 20210831
+          description: 검색할 생성일 범위의 종료
+          required: true
+      responses:
+        '200':
+          - application/json:

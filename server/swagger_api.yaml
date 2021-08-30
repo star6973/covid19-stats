@@ -1,0 +1,17 @@
+#* swagger version info
+swagger-jsdoc: '6.1.0'
+info:
+  title: Covid19 Rest API Server
+  description: Express와 SwaggerJSDoc으로 구현한 API 서버
+  version: '0.0.1'
+#* swagger host
+servers:
+  - url: http://localhost:5000
+#* base path url
+basePath: /covid19
+#* schemes
+schemes:
+  - http
+#* data type for transport client
+produces:
+  - application/json

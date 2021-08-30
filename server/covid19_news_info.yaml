@@ -1,0 +1,50 @@
+paths:
+  /covid19/news-info:
+    get:
+      tags:
+        - 외교부 최신 안전 소식(코로나 관련)
+      description: |
+        | 정보 | 설명  |
+        |---|---|
+        | API 요약 |제목을 이용하여 코로나 19 관련된 국가/지역별 최신 안전소식의 목록을 조회 |
+        | Service URL | http://apis.data.go.kr/1262000/SafetyNewsList |
+        | 메시지 타입 | Request-Response |
+      parameters:
+        - in: query
+          name: serviceKey
+          schema:
+            type: string
+            example: https://www.data.go.kr/data/15043145/openapi.do에서 인증키를 받으세요
+          description: 공공데이터포털에서 발급받은 인증키
+          required: true
+        - in: query
+          name: numOfRows
+          schema:
+            type: string
+            example: 10
+          description: 한 페이지 결과 수
+          required: true
+        - in: query
+          name: pageNo
+          schema:
+            type: string
+            example: 1
+          description: 페이지 번호
+          required: true
+        - in: query
+          name: title1
+          schema:
+            type: string
+            example: 입국
+          description: 제목 1
+          required: true
+        - in: query
+          name: title2
+          schema:
+            type: string
+            example: 격리
+          description: 제목 2
+          required: true
+      responses:
+        '200':
+          - application/json:
