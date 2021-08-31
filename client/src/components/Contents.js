@@ -3,6 +3,8 @@ import { ResponsiveLine  } from "@nivo/line";
 import { ResponsivePie } from "@nivo/pie";
 import { ResponsiveCalendar } from '@nivo/calendar'
 import axios from "axios";
+import Bar from "./Bar";
+import Bump from "./Bump";
 
 //* 1. 확진자 수 추이 캘린더
 //* 2. 확진자 수, 격리해제 수, 검사진행 수, 사망자 수, 치료진행 수 비교표
@@ -104,6 +106,7 @@ const comparedOptions = {
     ],
 };
 
+//~ Calander(확진), Pie(비교)
 //~ 국내발생 현황
 //~ decideCnt: 확진자 수
 //~ clearCnt: 격리해제 수
@@ -111,7 +114,7 @@ const comparedOptions = {
 //~ deathCnt: 사망자 수
 //~ careCnt: 치료 중 환자 수
 
-
+//! Choropleth
 //! 해외발생 현황
 //! areaNm: 지역명(한글)
 //! areaNmEn: 지역명(영문)
@@ -123,28 +126,9 @@ const comparedOptions = {
 //! seq: 게시글 번호(고윳값)
 
 
-//? gubun: 시도명(한글)
-//? gubunEn: 시도명(영어)
-//? incDec: 전일대비 증감수
-//? deathCnt: 사망자 수
-//? defCnt: 확진자 수
-//? isolClearCnt: 격리해제수
-//? isolIngCnt: 격리중 환자수
-//? localOccCnt: 지역발생수
-//? overFlowCnt: 해외유입수
-//? qurRate: 10만명당 발생률
-//? seq: 고윳값
 
 
-//& confCase: 확진자
-//& confCaseRate: 확진률
-//& criticalRate: 치명률
-//& death: 사망자
-//& deathRate: 사망률
-//& gubun: 구분(성별, 연령별) -> 8/21일 날짜에 대해 남성/여성/0-9/10-19/.../80이상
-//& seq: 고윳값
-
-
+//^ Header
 //^ content: 내용
 //^ contentHtml: html 내용
 //^ countryEnName: 국가명(영문)
@@ -155,6 +139,8 @@ const comparedOptions = {
 //^ wrDt: 작성일
 
 const Contents = () => {
+
+
     const [checkStartDate, setCheckStartDate] = useState("");
     const [checkEndDate, setCheckEndDate] = useState("");
     const [confirmedData, setConfirmedData] = useState({});
@@ -162,21 +148,18 @@ const Contents = () => {
 
     useEffect(() => {
         const fetchEvents = async () => {
-            const response = await axios.get("/api/covid");
+            const response = await axios.get("/covid19/korea-info");
             const response_data = (response.data.items).item.sort((a, b) => a.stateDt - b.stateDt);
             createDataForm(response_data);
 
-            const response2 = await axios.get("/api/covid2");
-            console.log(response2);
+            // const response2 = await axios.get("/covid19/world-info");
+            // console.log(response2);
 
-            const response3 = await axios.get("/api/covid3");
-            console.log(response3);
+            // const response4 = await axios.get("/covid19/age-gender-info");
+            // console.log(response4);
 
-            const response4 = await axios.get("/api/covid4");
-            console.log(response4);
-
-            const response5 = await axios.get("/api/covid5");
-            console.log(response5);
+            // const response5 = await axios.get("/covid19/news-info");
+            // console.log(response5);
         };
 
         const createDataForm = items => {
@@ -277,7 +260,7 @@ const Contents = () => {
     return (
         <div className="App-contents">
             <h2>국내 코로나 현황</h2>
-            <div className="App-chart">
+            {/* <div className="App-chart">
                 <div className="App-chart-confirmed">
                     {
                         Object.keys(confirmedData).length !== 0 ?
@@ -302,7 +285,9 @@ const Contents = () => {
                             <div>Loading...</div>
                     }
                 </div>
-            </div>
+            </div> */}
+            <Bar />
+            <Bump />
         </div>
     )
 }
