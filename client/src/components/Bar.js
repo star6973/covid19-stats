@@ -4,14 +4,14 @@ import axios from "axios";
 
 const barTheme = {
     fontFamily: "BMHANNAPro",
-    fontSize: 10,
+    fontSize: 13,
     textColor: "#a61e4d",
 };
 
 const barOption = {
     keys: [ '확진자수', '사망자수', '격리해제수', '격리진행수' ],
     indexBy: "area",
-    margin: { top: 50, right: 130, bottom: 50, left: 100 },
+    margin: { top: 0, right: 130, bottom: 150, left: 100 },
     padding: 0.3,
     valueScale: { type: 'linear' },
     indexScale: { type: 'band', round: true },
@@ -98,6 +98,7 @@ const Bar = () => {
             {
                 Object.keys(provinceData).length !== 0 ?
                     <div className="App-chart-bar">
+                        <p>국내 행정구역별 코로나 현황</p>
                         <ResponsiveBar
                             data={provinceData}
                             theme={barTheme}
