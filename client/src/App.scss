@@ -2,6 +2,10 @@
     font-family: 'BMHANNAPro';
     font-display: block;
 }
+.App {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
 .App-header {
     padding: 1rem 2rem;
     background: #38d9a9;
@@ -14,6 +18,8 @@
 }
 .App-contents {
     padding: 1rem;
+    display: grid;
+    justify-items: center;
 }
 .App-chart {
     display: grid;
@@ -30,4 +36,48 @@
 .App-chart-bar {
     width: 960px;
     height: 720px;
+}
+.App-chart-bump {
+    display: grid;
+    grid-template-columns: 480px 480px 480px;
+    padding-top: 70px;
+    
+    p {
+        text-align: center;
+        font-size: 25px;
+    }
+    .bump-conf {
+        width: 530px;
+        height: 480px;
+    }
+    .bump-critical {
+        width: 530px;
+        height: 480px;
+    }
+    .bump-death {
+        width: 530px;
+        height: 480px;
+    }
+}
+.App-chart-pie {
+    display: grid;
+    grid-template-columns: 480px 480px 480px;
+    padding-top: 70px;
+    
+    p {
+        text-align: center;
+        font-size: 25px;
+    }
+    .pie-conf {
+        width: 480px;
+        height: 360px;
+    }
+    .pie-critical {
+        width: 480px;
+        height: 360px;
+    }
+    .pie-death {
+        width: 480px;
+        height: 360px;
+    }
 }
