@@ -25,17 +25,23 @@
     display: grid;
     grid-auto-flow: column;
 }
-.App-chart-confirmed {
+.App-chart-calander {
     width: 960px;
     height: 480px;
-}
-.App-chart-compared {
-    width: 720px;
-    height: 480px;
+
+    p {
+        text-align: center;
+        font-size: 25px;
+    }
 }
 .App-chart-bar {
     width: 960px;
     height: 720px;
+
+    p {
+        text-align: center;
+        font-size: 25px;
+    }
 }
 .App-chart-bump {
     display: grid;
