@@ -80,22 +80,18 @@ const pieOption = {
     ]
 }
 
-
 const Bump = () => {
     const [ageConfData, setAgeConfData] = useState({});
     const [ageCriticalData, setAgeCriticalData] = useState({});
     const [ageDeathData, setAgeDeathData] = useState({});
-
     const [genderConfData, setGenderConfData] = useState({});
     const [genderCriticalData, setGenderCriticalData] = useState({});
     const [genderDeathData, setGenderDeathData] = useState({});
 
     useEffect(() => {
-
         const fetchURL = async () => {
             let response = await axios.get("/covid19/age-gender-info");
             response = (response.data.items).item.sort((a, b) => new Date(a.createDt) - new Date(b.createDt));
-
             createDataForm(response);
         };
 
