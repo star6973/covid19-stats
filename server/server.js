@@ -57,7 +57,7 @@ app.get("/covid19/world-info", async (req, res) => {
             serviceKey: encodeURI(covid19ServiceKey),
             numOfRows: 10,
             pageNo: 1,
-            startCreateDt: startDate,
+            startCreateDt: endDate,
             endCreateDt: endDate,
         }
     }).then(response => {

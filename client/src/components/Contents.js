@@ -1,4 +1,5 @@
 import Calendar from "./Calander";
+import Choropleth from "./Choropleth";
 import Bar from "./Bar";
 import Bump from "./Bump";
 
@@ -27,9 +28,10 @@ const Contents = () => {
 
     return (
         <div className="App-contents">
-            <Calendar />
+            {/* <Calendar />
             <Bar />
-            <Bump />
+            <Bump /> */}
+            <Choropleth />
         </div>
     )
 }
