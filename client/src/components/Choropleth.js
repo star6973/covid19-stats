@@ -1,30 +1,10 @@
-import { useState, useEffec, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { ResponsiveChoroplethCanvas } from '@nivo/geo'
 import axios from "axios";
 import isoXMLData from "../ISO_CODE.xml"
 
 const Choropleth = () => {
-    const [worldConfData, setWorldConfData] = useState([
-        {
-            "id": "AFG",
-            "value": 577757
-        }, {
-            "id": "AGO",
-            "value": 201960
-        }, {
-            "id": "ALB",
-            "value": 704577
-        }, {
-            "id": "ARE",
-            "value": 987649
-        }, {
-            "id": "ARG",
-            "value": 983466
-        }, {
-            "id": "ARM",
-            "value": 964604
-        }
-    ]);
+    const [worldConfData, setWorldConfData] = useState([]);
 
     useEffect(() => {
         const fetchURL = async () => {
@@ -35,7 +15,7 @@ const Choropleth = () => {
         };
 
         const createDataForm = (items, xml) => {
-            const formData = items.map(item => {
+            const refineItems = items.map(item => {
                 return {
                     id: item.nationNmEn,
                     value: item.natDefCnt,
@@ -56,13 +36,20 @@ const Choropleth = () => {
                 nationCodeDict[nation] = isoCode;
             }
 
-            setTimeout(() => {
-                console.log(worldConfData);
-            }, 2000);            
+            const formData = refineItems.map(el => {
+                return {
+                    id: nationCodeDict[el.id],
+                    value: el.value,
+                }
+            }).filter(item => item.id !== undefined)
+            
+            console.log("formData = ", formData);
+
+            setWorldConfData(formData);
         }
         
         fetchURL();
-    }, []);
+    }, [worldConfData]);
 
     return (
         <>
@@ -73,31 +60,31 @@ const Choropleth = () => {
                             data={worldConfData}
                             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
                             colors="RdBu"
-                            // domain={[ 0, 1000000 ]}
-                            // unknownColor="#101b42"
-                            // label="properties.name"
-                            // valueFormat=".2s"
-                            // projectionTranslation={[ 0.5, 0.5 ]}
-                            // projectionRotation={[ 0, 0, 0 ]}
-                            // enableGraticule={true}
-                            // graticuleLineColor="rgba(0, 0, 0, .2)"
-                            // borderWidth={0.5}
-                            // borderColor="#101b42"
-                            // legends={[
-                            //     {
-                            //         anchor: 'bottom-left',
-                            //         direction: 'column',
-                            //         justify: true,
-                            //         translateX: 20,
-                            //         translateY: -60,
-                            //         itemsSpacing: 0,
-                            //         itemWidth: 92,
-                            //         itemHeight: 18,
-                            //         itemDirection: 'left-to-right',
-                            //         itemOpacity: 0.85,
-                            //         symbolSize: 18
-                            //     }
-                            // ]}
+                            domain={[ 0, 1000000 ]}
+                            unknownColor="#101b42"
+                            label="properties.name"
+                            valueFormat=".2s"
+                            projectionTranslation={[ 0.5, 0.5 ]}
+                            projectionRotation={[ 0, 0, 0 ]}
+                            enableGraticule={true}
+                            graticuleLineColor="rgba(0, 0, 0, .2)"
+                            borderWidth={0.5}
+                            borderColor="#101b42"
+                            legends={[
+                                {
+                                    anchor: 'bottom-left',
+                                    direction: 'column',
+                                    justify: true,
+                                    translateX: 20,
+                                    translateY: -60,
+                                    itemsSpacing: 0,
+                                    itemWidth: 92,
+                                    itemHeight: 18,
+                                    itemDirection: 'left-to-right',
+                                    itemOpacity: 0.85,
+                                    symbolSize: 18
+                                }
+                            ]}
                         />
                     </div>
                 :
