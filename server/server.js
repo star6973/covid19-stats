@@ -30,6 +30,9 @@ app.listen(port, () => {
 const startDate = "20200201";
 const now = new Date();
 const endDate = `${now.getFullYear()}${(now.getMonth() + 1).toString().padStart(2, "0")}${now.getDate().toString().padStart(2, "0")}`
+let yesterDate = new Date();
+yesterDate.setDate(yesterDate.getDate() - 1);
+yesterDate = `${yesterDate.getFullYear()}${(yesterDate.getMonth() + 1).toString().padStart(2, "0")}${yesterDate.getDate().toString().padStart(2, "0")}`
 
 //* 국내 발생 현황
 const covid19KoreaInfoURL = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson";
@@ -57,7 +60,7 @@ app.get("/covid19/world-info", async (req, res) => {
             serviceKey: encodeURI(covid19ServiceKey),
             numOfRows: 10,
             pageNo: 1,
-            startCreateDt: endDate,
+            startCreateDt: yesterDate,
             endCreateDt: endDate,
         }
     }).then(response => {
