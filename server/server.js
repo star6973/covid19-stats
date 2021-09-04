@@ -114,9 +114,8 @@ app.get("/covid19/news-info", async (req, res) => {
             serviceKey: encodeURI(covid19ServiceKey),
             numOfRows: 10,
             pageNo: 1,
-            title1: "입국",
-            title2: "격리",
-            title3: "코로나",
+            title1: "코로나",
+            title2: "covid",
         }
     }).then(response => {
         res.json(response.data.response.body);
