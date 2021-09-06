@@ -18,6 +18,18 @@ const Header = () => {
                 .slice(-2);
 
             console.log('데이터 1 = ', response);
+
+            const prevConfData = response[0].decideCnt;
+            const prevClearData = response[0].clearCnt;
+            const prevExamData = response[0].examCnt;
+            const prevDeathData = response[0].deathCnt;
+            
+            const nextConfData = response[1].decideCnt;
+            const nextClearData = response[1].clearCnt;
+            const nextExamData = response[1].examCnt;
+            const nextDeathData = response[1].deathCnt;
+            
+
             createDataForm(response);
 
             response = await axios.get('/covid19/news-info');
@@ -70,7 +82,7 @@ const Header = () => {
                                         </h5>
                                     </div>
                                     <div className="col-auto col">
-                                        <div classNam="icon"></div>
+                                        <div className="icon"></div>
                                     </div>
                                 </div>
                                 <p className="mt-3 mb-0 text-muted text-sm">
