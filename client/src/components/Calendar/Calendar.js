@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { ResponsiveCalendar } from '@nivo/calendar';
 import axios from 'axios';
+import './Calendar.scss';
 
-const calanderTheme = {
+const calenderTheme = {
     fontFamily: 'BMHANNAPro',
-    fontSize: 10,
+    fontSize: 20,
     textColor: 'black',
 };
-
-const calanderOption = (start, end) => {
+const calenderOption = (start, end) => {
     return {
         from: start,
         to: end,
@@ -23,10 +23,11 @@ const calanderOption = (start, end) => {
             '#c92a2a',
         ],
         margin: { top: 0, right: 40, bottom: 40, left: 40 },
-        yearSpacing: 40,
+        yearSpacing: 45,
         monthBorderColor: '#ffffff',
         dayBorderWidth: 2,
         dayBorderColor: '#ffffff',
+        yearLegendOffset: 25,
         legends: [
             {
                 anchor: 'bottom-right',
@@ -102,20 +103,22 @@ const Calendar = () => {
     }, []);
 
     return (
-        <>
+        <div className="App-Calender">
             {Object.keys(confirmedData).length !== 0 ? (
-                <div className="App-chart-calander">
-                    <p>국내 코로나 현황</p>
-                    <ResponsiveCalendar
-                        data={confirmedData}
-                        theme={calanderTheme}
-                        {...calanderOption(checkStartDate, checkEndDate)}
-                    />
+                <div className="App-Calendar-container">
+                    <div className="App-chart-calendar">
+                        <p>국내 코로나 현황</p>
+                        <ResponsiveCalendar
+                            data={confirmedData}
+                            theme={calenderTheme}
+                            {...calenderOption(checkStartDate, checkEndDate)}
+                        />
+                    </div>
                 </div>
             ) : (
                 <div>Loading...</div>
             )}
-        </>
+        </div>
     );
 };
 

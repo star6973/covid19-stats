@@ -1,0 +1,30 @@
+.App-Calender {
+    width: 1920px;
+    height: 1080px;
+    padding: 1rem 2rem;
+    background: linear-gradient(87deg, #8A2387, #E94057, #F27121 100%) !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8rem !important;
+    padding-bottom: 8rem !important;
+}
+.App-Calendar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.App-chart-calendar {
+    width: 1920px;
+    height: 1080px;
+
+    p {
+        text-align: center;
+        font-size: 40px;
+    }
+}

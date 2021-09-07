@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ResponsiveBump } from '@nivo/bump';
 import { ResponsivePie } from '@nivo/pie';
 import axios from 'axios';
+import './Bump.scss';
 
 const bumpTheme = {
     fontFamily: 'BMHANNAPro',
@@ -42,7 +43,7 @@ const pieTheme = {
     textColor: 'black',
 };
 const pieOption = {
-    margin: { top: 40, right: 80, bottom: 130, left: 80 },
+    margin: { top: 40, right: 80, bottom: 150, left: 80 },
     innerRadius: 0.5,
     padAngle: 0.7,
     colors: { scheme: 'set3' },
@@ -259,11 +260,11 @@ const Bump = () => {
     }, []);
 
     return (
-        <>
+        <div className="App-Bump">
             {Object.keys(ageConfData).length !== 0 &&
             Object.keys(ageCriticalData).length !== 0 &&
             Object.keys(ageDeathData).length !== 0 ? (
-                <>
+                <div className="App-Bump-container">
                     <div className="App-chart-bump">
                         <div className="bump-conf">
                             <p>연령별 확진률</p>
@@ -316,11 +317,11 @@ const Bump = () => {
                             />
                         </div>
                     </div>
-                </>
+                </div>
             ) : (
                 <div>Loading...</div>
             )}
-        </>
+        </div>
     );
 };
 

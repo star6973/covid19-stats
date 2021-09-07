@@ -1,7 +1,7 @@
-import Calendar from './Calander';
-import Choropleth from './Choropleth';
+import Calendar from './Calendar/Calendar';
+import Choropleth from './Cholopleth/Choropleth';
 import Bar from './Bar';
-import Bump from './Bump';
+import Bump from './Bump/Bump';
 
 //^ Header
 //^ content: 내용
@@ -16,10 +16,7 @@ import Bump from './Bump';
 const Contents = () => {
     return (
         <div className="App-contents">
-            <Calendar />
-            <Bar />
-            <Bump />
-            <Choropleth />
+            {/* <Choropleth /> */}
         </div>
     );
 };

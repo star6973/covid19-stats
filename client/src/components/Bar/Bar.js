@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import axios from 'axios';
+import './Bar.scss';
 
 const barTheme = {
     fontFamily: 'BMHANNAPro',
-    fontSize: 13,
+    fontSize: 15,
     textColor: '#a61e4d',
 };
 
 const barOption = {
     keys: ['확진자수', '사망자수', '격리해제수', '격리진행수'],
     indexBy: 'area',
-    margin: { top: 0, right: 130, bottom: 150, left: 100 },
+    margin: { top: 0, right: 150, bottom: 250, left: 150 },
     padding: 0.3,
     valueScale: { type: 'linear' },
     indexScale: { type: 'band', round: true },
@@ -24,7 +25,7 @@ const barOption = {
         tickRotation: 0,
         legend: '행정구역',
         legendPosition: 'middle',
-        legendOffset: 42,
+        legendOffset: 42
     },
     axisLeft: {
         tickSize: 5,
@@ -32,7 +33,7 @@ const barOption = {
         tickRotation: 0,
         legend: '현황',
         legendPosition: 'middle',
-        legendOffset: -70,
+        legendOffset: -100,
     },
     labelSkipHeight: 10,
     labelTextColor: { from: 'color', modifiers: [['darker', 1.6]] },
@@ -116,20 +117,22 @@ const Bar = () => {
     }, []);
 
     return (
-        <>
+        <div className="App-Bar">
             {Object.keys(provinceData).length !== 0 ? (
-                <div className="App-chart-bar">
-                    <p>국내 행정구역별 코로나 현황</p>
-                    <ResponsiveBar
-                        data={provinceData}
-                        theme={barTheme}
-                        {...barOption}
-                    />
+                <div className="App-Bar-container">
+                    <div className="App-chart-bar">
+                        <p>국내 행정구역별 코로나 현황</p>
+                        <ResponsiveBar
+                            data={provinceData}
+                            theme={barTheme}
+                            {...barOption}
+                        />
+                    </div>
                 </div>
             ) : (
                 <div>Loading...</div>
             )}
-        </>
+        </div>
     );
 };
 

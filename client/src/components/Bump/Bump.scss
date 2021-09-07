@@ -1,0 +1,61 @@
+.App-Bump {
+    width: 1920px;
+    height: 1080px;
+    padding: 1rem 2rem;
+    background: linear-gradient(87deg, #efefbb 0, #d4d3dd 100%) !important;
+    display: flex;
+    align-items: center;
+    padding-bottom: 8rem !important;
+}
+.App-Bump-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+.App-chart-bump {
+    display: grid;
+    grid-template-columns: 480px 480px 480px;
+    padding-top: 70px;
+    
+    p {
+        text-align: center;
+        font-size: 40px;
+    }
+    .bump-conf {
+        width: 530px;
+        height: 480px;
+    }
+    .bump-critical {
+        width: 530px;
+        height: 480px;
+    }
+    .bump-death {
+        width: 530px;
+        height: 480px;
+    }
+}
+.App-chart-pie {
+    display: grid;
+    grid-template-columns: 480px 480px 480px;
+    padding-top: 70px;
+    
+    p {
+        text-align: center;
+        font-size: 40px;
+    }
+    .pie-conf {
+        width: 480px;
+        height: 360px;
+    }
+    .pie-critical {
+        width: 480px;
+        height: 360px;
+    }
+    .pie-death {
+        width: 480px;
+        height: 360px;
+    }
+}

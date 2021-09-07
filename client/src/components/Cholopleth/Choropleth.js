@@ -1,8 +1,50 @@
 import { useState, useEffect } from 'react';
 import { ResponsiveChoropleth } from '@nivo/geo';
 import axios from 'axios';
-import worldJSON from '../world.json';
-import isoXMLData from '../ISO_CODE.xml';
+import worldJSON from './world.json';
+import isoXMLData from './ISO_CODE.xml';
+import './Choropleth.scss';
+
+const choroplethTheme = {
+    fontFamily: 'BMHANNAPro',
+    fontSize: 10,
+    textColor: 'black',
+};
+const choroplethOption = {
+    colors: "nivo",
+    unknownColor: "#666666",
+    valueFormat: ".2s",
+    projectionTranslation: [0.5, 0.5],
+    enableGraticule: true,
+    graticuleLineColor: "#dddddd",
+    borderWidth: 0.5,
+    borderColor: "#152538",
+    legends: [
+        {
+            anchor: 'bottom-left',
+            direction: 'column',
+            justify: true,
+            translateX: 20,
+            translateY: -100,
+            itemsSpacing: 0,
+            itemWidth: 94,
+            itemHeight: 18,
+            itemDirection: 'left-to-right',
+            itemTextColor: '#444444',
+            itemOpacity: 0.85,
+            symbolSize: 18,
+            effects: [
+                {
+                    on: 'hover',
+                    style: {
+                        itemTextColor: '#000000',
+                        itemOpacity: 1,
+                    },
+                },
+            ],
+        },
+    ],
+};
 
 const Choropleth = () => {
     const [worldConfData, setWorldConfData] = useState({});
@@ -60,50 +102,23 @@ const Choropleth = () => {
     }, [setWorldConfData]);
 
     return (
-        <>
+        <div className="App-Choropleth">
             {Object.keys(worldConfData).length !== 0 ? (
-                <ResponsiveChoropleth
-                    data={worldConfData}
-                    features={worldJSON.features}
-                    colors="nivo"
-                    unknownColor="#666666"
-                    label="properties.name"
-                    valueFormat=".2s"
-                    projectionTranslation={[0.5, 0.5]}
-                    enableGraticule={true}
-                    graticuleLineColor="#dddddd"
-                    borderWidth={0.5}
-                    borderColor="#152538"
-                    legends={[
-                        {
-                            anchor: 'bottom-left',
-                            direction: 'column',
-                            justify: true,
-                            translateX: 20,
-                            translateY: -100,
-                            itemsSpacing: 0,
-                            itemWidth: 94,
-                            itemHeight: 18,
-                            itemDirection: 'left-to-right',
-                            itemTextColor: '#444444',
-                            itemOpacity: 0.85,
-                            symbolSize: 18,
-                            effects: [
-                                {
-                                    on: 'hover',
-                                    style: {
-                                        itemTextColor: '#000000',
-                                        itemOpacity: 1,
-                                    },
-                                },
-                            ],
-                        },
-                    ]}
-                />
+                <div className="App-Choropleth-container">
+                    <div className="App-chart-choropleth">
+                        <ResponsiveChoropleth
+                            data={worldConfData}
+                            features={worldJSON.features}
+                            theme={choroplethTheme}
+                            label="properties.name"
+                            {...choroplethOption}
+                        />
+                    </div>
+                </div>
             ) : (
                 <div>Loading...</div>
             )}
-        </>
+        </div>
     );
 };
 
