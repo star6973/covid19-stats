@@ -9,15 +9,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 8rem !important;
-    padding-bottom: 8rem !important;
 }
 .App-Card-container {
     width: 100%;
+    height: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+}
+.App-chart-card {
+    height: 100%;
+    display: grid;
+    
+    p {
+        text-align: center;
+        font-size: 40px;
+    }
 }
 .row {
     display: flex;

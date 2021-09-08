@@ -107,7 +107,7 @@ const Calendar = () => {
             {Object.keys(confirmedData).length !== 0 ? (
                 <div className="App-Calendar-container">
                     <div className="App-chart-calendar">
-                        <p>국내 코로나 현황</p>
+                        <p>국내 연간 코로나 현황</p>
                         <ResponsiveCalendar
                             data={confirmedData}
                             theme={calenderTheme}
