@@ -11,7 +11,7 @@ const choroplethTheme = {
     textColor: 'black',
 };
 const choroplethOption = {
-    colors: "nivo",
+    colors: "YlOrRd",
     unknownColor: "#666666",
     valueFormat: ".2s",
     projectionTranslation: [0.5, 0.5],
@@ -24,8 +24,8 @@ const choroplethOption = {
             anchor: 'bottom-left',
             direction: 'column',
             justify: true,
-            translateX: 20,
-            translateY: -100,
+            translateX: 400,
+            translateY: -250,
             itemsSpacing: 0,
             itemWidth: 94,
             itemHeight: 18,
@@ -102,23 +102,25 @@ const Choropleth = () => {
     }, [setWorldConfData]);
 
     return (
-        <div className="App-Choropleth">
+        <>
             {Object.keys(worldConfData).length !== 0 ? (
-                <div className="App-Choropleth-container">
-                    <div className="App-chart-choropleth">
-                        <ResponsiveChoropleth
-                            data={worldConfData}
-                            features={worldJSON.features}
-                            theme={choroplethTheme}
-                            label="properties.name"
-                            {...choroplethOption}
-                        />
+                <div className="App-Choropleth">
+                    <div className="App-Choropleth-container">
+                        <p>코로나 바이러스 감염현황(세계)</p>
+                        <div className="App-chart-choropleth">
+                            <ResponsiveChoropleth
+                                data={worldConfData}
+                                features={worldJSON.features}
+                                theme={choroplethTheme}
+                                {...choroplethOption}
+                            />
+                        </div>
                     </div>
                 </div>
             ) : (
                 <div>Loading...</div>
             )}
-        </div>
+        </>
     );
 };
 
