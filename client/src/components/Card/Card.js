@@ -82,7 +82,7 @@ const Card = () => {
             Object.keys(koreaData.deathRate).length !== 0 ? (
                 <div className="App-Card-container">
                     <div className="App-chart-card">
-                        <p>코로나 바이러스 감염현황</p>
+                        <p>코로나 바이러스 감염현황(국내)</p>
                         <div className="row">
                             <div className="col">
                                 <div className="card">

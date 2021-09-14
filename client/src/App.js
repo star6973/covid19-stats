@@ -3,7 +3,7 @@ import Card from './components/Card/Card';
 import Calendar from './components/Calendar/Calendar';
 import Bar from './components/Bar/Bar';
 import Bump from './components/Bump/Bump';
-import Choropleth from './components/Cholopleth/Choropleth';
+import Choropleth from './components/Choropleth/Choropleth';
 import ScrollableContainer from 'react-full-page-scroll';
 
 const PageComponent = ({children}) => {
