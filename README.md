@@ -15,7 +15,10 @@
 - Full Page Scroll
     1. [react-fullpage](https://github.com/alvarotrigo/react-fullpage)
 
-- CORS 문제 해결을 위해 client와 server로 나누어서 개발
+- CORS 문제 해결을 위해 server와 client로 나누어서 개발
+    1. server는 express + swagger로 구현
+    2. client는 react로 구현
+
 - 1920x1080 해상도
 
 ---
